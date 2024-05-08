@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Happy Note</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="opp_no_data">Opp! No Data</string>
+    <string name="buy_3_data">Buy 3 times</string>
+    <string name="buy_5_notes">Buy 5 times</string>
+    <string name="buy_3_notes">Buy 3 times</string>
+    <string name="buy_10_notes">Buy 10 times</string>
+    <string name="subpremium">Sub Premium</string>
+    <string name="welcom_string">Welcome To Happy Note!!!</string>
+</resources>

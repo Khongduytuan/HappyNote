@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_garph"
+    app:startDestination="@id/dataFragment">
+
+    <fragment
+        android:id="@+id/dataFragment"
+        android:name="com.eagletech.happynote.screen.frag.DataFragment"
+        android:label="fragment_data"
+        tools:layout="@layout/fragment_data" >
+        <action
+            android:id="@+id/action_dataFragment_to_insertDataFragment"
+            app:destination="@id/insertDataFragment" />
+        <action
+            android:id="@+id/action_dataFragment_to_updateDataFragment"
+            app:destination="@id/updateDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertDataFragment"
+        android:name="com.eagletech.happynote.screen.frag.InsertDataFragment"
+        android:label="fragment_insert_data"
+        tools:layout="@layout/fragment_insert_data" >
+        <action
+            android:id="@+id/action_insertDataFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+        <action
+            android:id="@+id/action_insertDataFragment_to_updateDataFragment"
+            app:destination="@id/updateDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateDataFragment"
+        android:name="com.eagletech.happynote.screen.frag.UpdateDataFragment"
+        android:label="fragment_update_data"
+        tools:layout="@layout/fragment_update_data" >
+        <action
+            android:id="@+id/action_updateDataFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+    </fragment>
+</navigation>
