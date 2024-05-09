@@ -2,28 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimaryDark"
-    android:paddingVertical="12dp"
-    >
+    android:orientation="horizontal"
+    android:paddingVertical="12dp">
 
 
     <ImageView
         android:id="@+id/menuIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_menu"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp"
+        app:tint="@color/white"
+        android:src="@drawable/icon_shop" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:text="Title"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
         android:gravity="center"
-        android:layout_gravity="center_vertical"/>
+        android:text="@string/name_app"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/infoIcon"
+        app:tint="@color/white"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_info"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="16dp"/>
 </LinearLayout>

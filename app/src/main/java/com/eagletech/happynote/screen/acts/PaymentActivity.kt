@@ -29,6 +29,7 @@ class PaymentActivity : AppCompatActivity() {
         const val sub10times = ""
         const val subPre = ""
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         paymentBinding = ActivityPaymentBinding.inflate(layoutInflater)
@@ -40,11 +41,13 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun setClickItems() {
-        paymentBinding.buttonBuy3.setOnClickListener { dataSharedPreferences.setLives(3) }
-        paymentBinding.buttonBuy5.setOnClickListener {  }
-        paymentBinding.buttonBuy10.setOnClickListener {  }
-        paymentBinding.buttonBuyPremiumWeek.setOnClickListener {  }
-        paymentBinding.buttonExitApp.setOnClickListener {  }
+        paymentBinding.buttonBuy3.setOnClickListener {
+            dataSharedPreferences.addLives(3)
+        }
+        paymentBinding.buttonBuy5.setOnClickListener { }
+        paymentBinding.buttonBuy10.setOnClickListener { }
+        paymentBinding.buttonBuyPremiumWeek.setOnClickListener { }
+        paymentBinding.buttonExitApp.setOnClickListener { }
     }
 
     private fun setupIAPOnCreate() {
