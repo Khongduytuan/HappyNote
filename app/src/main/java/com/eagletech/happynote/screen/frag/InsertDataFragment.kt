@@ -36,7 +36,7 @@ class InsertDataFragment : Fragment(R.layout.fragment_insert_data) {
     ): View {
         _insertDataBinding = FragmentInsertDataBinding.inflate(inflater, container, false)
         insertDataBinding.doneData.setOnClickListener {
-            if (dataSharedPreferences.getLives() > 0) {
+            if (dataSharedPreferences.getLives() > 0 || dataSharedPreferences.isPremium == true) {
                 saveData(requireView())
             } else {
                 Toast.makeText(

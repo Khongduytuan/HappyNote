@@ -3,73 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".screen.acts.PaymentActivity">
 
-
-
-
     <TextView
-        android:text="@string/welcom_string"
-        android:textSize="32sp"
-        android:layout_marginBottom="24dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:text="@string/welcom_string"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="28dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="28dp">
+
         <LinearLayout
-            android:paddingVertical="12dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="12dp">
 
             <Button
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:id="@+id/button_buy_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
                 android:text="@string/buy_3_notes"
-                android:textSize="28sp"
-                android:layout_marginTop="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:id="@+id/button_buy_5"
-                android:text="@string/buy_5_notes"
-                android:layout_marginTop="12dp"
-                android:textSize="28sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:id="@+id/button_buy_10"
-                android:text="@string/buy_10_notes"
-                android:layout_marginTop="12dp"
-                android:textSize="28sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="28sp" />
 
             <Button
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:id="@+id/button_buy_premium_week"
-                android:text="@string/subpremium"
-                android:layout_marginTop="12dp"
-                android:textSize="28sp"
+                android:id="@+id/button_buy_5"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/buy_5_notes"
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/button_buy_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/buy_10_notes"
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/button_buy_premium_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/subpremium"
+                android:textSize="28sp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -77,10 +77,10 @@
 
     <Button
         android:id="@+id/button_exit_app"
-        android:text="Exit"
-        android:textSize="14sp"
-        android:layout_marginBottom="12dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Exit"
+        android:textSize="14sp" />
 
 </LinearLayout>

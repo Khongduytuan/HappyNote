@@ -48,7 +48,7 @@
                 android:layout_marginTop="16dp"
                 android:maxHeight="170dp"
                 android:text="Type something..."
-                android:textColor="@color/hintColor"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 

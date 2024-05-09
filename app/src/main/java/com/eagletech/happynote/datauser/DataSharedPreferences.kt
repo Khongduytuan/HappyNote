@@ -63,8 +63,8 @@ class DataSharedPreferences constructor(context: Context) {
         }
         set(state) {
             val userId = sharedPreferences.getString("UserId", "")
-            sharedPreferences.edit().putBoolean("PremiumPlan_\$userId$userId", state!!)
-            sharedPreferences.edit().apply()
+            sharedPreferences.edit().putBoolean("PremiumPlan_\$userId$userId", state!!).apply()
+//            sharedPreferences.edit().apply()
         }
 
     // Lưu thông tin người dùng

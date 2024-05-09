@@ -21,13 +21,12 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var currentUserId: String
     private lateinit var currentMarketplace: String
 
-
     // Phải thêm sku các gói vào ứng dụng
     companion object {
-        const val sub3times = ""
-        const val sub5times = ""
-        const val sub10times = ""
-        const val subPre = ""
+        const val sub3Times = "com.eagletech.happynote.threenotes"
+        const val sub5Times = "com.eagletech.happynote.fivenotes"
+        const val sub10Times = "com.eagletech.happynote.tennotes"
+        const val subPre = "com.eagletech.happynote.subpremium"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,19 +34,27 @@ class PaymentActivity : AppCompatActivity() {
         paymentBinding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(paymentBinding.root)
         dataSharedPreferences = DataSharedPreferences.getInstance(this)
-//        setupIAPOnCreate()
+        setupIAPOnCreate()
         setClickItems()
 
     }
 
     private fun setClickItems() {
         paymentBinding.buttonBuy3.setOnClickListener {
-            dataSharedPreferences.addLives(3)
+//            dataSharedPreferences.addLives(3)
+            PurchasingService.purchase(sub3Times)
         }
-        paymentBinding.buttonBuy5.setOnClickListener { }
-        paymentBinding.buttonBuy10.setOnClickListener { }
-        paymentBinding.buttonBuyPremiumWeek.setOnClickListener { }
-        paymentBinding.buttonExitApp.setOnClickListener { }
+        paymentBinding.buttonBuy5.setOnClickListener {
+            PurchasingService.purchase(sub5Times)
+        }
+        paymentBinding.buttonBuy10.setOnClickListener {
+            PurchasingService.purchase(sub10Times)
+        }
+        paymentBinding.buttonBuyPremiumWeek.setOnClickListener {
+            PurchasingService.purchase(subPre)
+//            dataSharedPreferences.isPremium = true
+        }
+        paymentBinding.buttonExitApp.setOnClickListener { finish() }
     }
 
     private fun setupIAPOnCreate() {
@@ -69,11 +76,9 @@ class PaymentActivity : AppCompatActivity() {
             override fun onProductDataResponse(productDataResponse: ProductDataResponse) {
                 when (productDataResponse.requestStatus) {
                     ProductDataResponse.RequestStatus.SUCCESSFUL -> {
-
                         val products = productDataResponse.productData
                         for (key in products.keys) {
                             val product = products[key]
-                            //
                             Log.v(
                                 "Product:", String.format(
                                     "Product: %s\n Type: %s\n SKU: %s\n Price: %s\n Description: %s\n",
@@ -84,7 +89,6 @@ class PaymentActivity : AppCompatActivity() {
                                     product.description
                                 )
                             )
-
                         }
                         //get all unavailable SKUs
                         for (s in productDataResponse.unavailableSkus) {
@@ -100,10 +104,22 @@ class PaymentActivity : AppCompatActivity() {
             override fun onPurchaseResponse(purchaseResponse: PurchaseResponse) {
                 when (purchaseResponse.requestStatus) {
                     PurchaseResponse.RequestStatus.SUCCESSFUL -> {
+
+                        if (purchaseResponse.receipt.sku == sub3Times) {
+                            dataSharedPreferences.addLives(3)
+                        }
+                        if (purchaseResponse.receipt.sku == sub5Times) {
+                            dataSharedPreferences.addLives(10)
+                        }
+                        if (purchaseResponse.receipt.sku == sub10Times) {
+                            dataSharedPreferences.addLives(15)
+                        }
+
                         PurchasingService.notifyFulfillment(
                             purchaseResponse.receipt.receiptId,
                             FulfillmentResult.FULFILLED
                         )
+
                         dataSharedPreferences.isPremium = !purchaseResponse.receipt.isCanceled
                         Log.v("FAILED", "FAILED")
                     }
@@ -136,5 +152,18 @@ class PaymentActivity : AppCompatActivity() {
             "DetailBuyAct",
             "Appstore SDK Mode: " + LicensingService.getAppstoreSDKMode()
         )
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        PurchasingService.getUserData()
+        val productSkus: MutableSet<String> = HashSet()
+        productSkus.add(subPre)
+        productSkus.add(sub3Times)
+        productSkus.add(sub5Times)
+        productSkus.add(sub10Times)
+        PurchasingService.getProductData(productSkus)
+        PurchasingService.getPurchaseUpdates(false)
     }
 }

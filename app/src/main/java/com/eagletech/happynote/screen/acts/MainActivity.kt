@@ -29,18 +29,24 @@ class MainActivity : AppCompatActivity() {
     private fun checkUI() {
         Log.d("data", dataSharedPreferences.getLives().toString())
         Log.d("data state user", (dataSharedPreferences.getCurrentUserId() != null).toString())
-        if (dataSharedPreferences.getCurrentUserId() == null) {
-
-        } else {
+        Log.d("data state isPremium", dataSharedPreferences.isPremium.toString())
+        if (dataSharedPreferences.isPremium == true){
+            mainBinding.tvEnableApp.visibility = View.GONE
+            mainBinding.fragmentContainer.visibility = View.VISIBLE
+        }else{
             if ((dataSharedPreferences.getLives() > 0)) {
                 mainBinding.tvEnableApp.visibility = View.GONE
                 mainBinding.fragmentContainer.visibility = View.VISIBLE
             } else {
                 mainBinding.tvEnableApp.visibility = View.VISIBLE
                 mainBinding.fragmentContainer.visibility = View.GONE
-
             }
         }
+
+
+
+
+
     }
 
     private fun setClickItems() {
@@ -57,9 +63,13 @@ class MainActivity : AppCompatActivity() {
     private fun showInfoDialog() {
         val dialog = AlertDialog.Builder(this)
             .setTitle("Information")
-            .setMessage("Great, you have ${dataSharedPreferences.getLives()} turns left")
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .create()
+        if (dataSharedPreferences.isPremium == true){
+            dialog.setMessage("You have successfully registered for the package")
+        }else{
+            dialog.setMessage("Great, you have ${dataSharedPreferences.getLives()} turns left")
+        }
         dialog.show()
     }
 
